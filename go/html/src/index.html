@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/jquery-3.3.1.js"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="all_box">
+        <div class="header">
+            <span class="all_add all">
+                        总收入 
+                        <span>2745272</span>
+            </span>
+            <span class="all_remove all">
+                        总支出 
+                        <span>72727</span>
+            </span>
+            <span class="all_ all">
+                        总结余 
+                        <span>275275</span>
+            </span>
+        </div>
+        <div class="box">
+            <div class="left l">
+                <div class="btn">
+                    <button>收入</button>
+                    <button class="btt">支出</button>
+                </div>
+
+                <div class="more">
+                    <p>金额</p>
+                    <input type="text">
+                    <p>时间</p>
+                    <input type="time">
+                    <p>备注</p>
+                    <input type="text">
+                    <p>分类</p>
+                    <select name="" id="select" class="sel">
+                        <option value="衣服">衣服</option>
+                        <option value="煮饭">煮饭</option>
+                        <option value="吃喝玩">吃喝玩</option>
+                        <option value="上网">上网</option>
+                        <option value="sp">sp</option>
+                        <option value="度假">度假</option>
+                        <option value="老婆">老婆</option>
+                        <option value="老板">老板</option>
+                    </select>
+                    <p>成员</p>
+                    <select name="" id="selector" class="sel">
+                        <option value="自己">自己</option>
+                        <option value="爸爸">爸爸</option>
+                        <option value="妈妈">妈妈</option>
+                        <option value="大姨妈">大姨妈</option>
+                        <option value="弟弟">弟弟</option>
+                        <option value="妹妹">妹妹</option>
+                        <option value="老婆">老婆</option>
+                        <option value="爷爷奶奶">爷爷奶奶</option>
+                    </select>
+                    <button>√</button>
+                </div>
+
+            </div>
+            <div class="right l">
+                <table>
+                    <tr>
+                        <td>日期</td>
+                        <td>分类</td>
+                        <td>金额</td>
+                        <td>成员</td>
+                        <td>备注</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var btns = [...document.querySelectorAll(".btn>button")];
+        btns.forEach((item) => {
+            item.onclick = function() {
+                for (var i = 0; i < btns.length; i++) {
+                    btns[i].classList.remove("btt");
+                }
+                this.classList.add("btt");
+            }
+        })
+
+        $.ajax({
+            url: "/find",
+            success(opt) {
+                console.log(opt);
+            }
+        })
+
+        $.ajax({
+            url: "/insert",
+            method: "POST",
+            data: {
+                "gogo": "代考网"
+            },
+            success(opt) {
+                console.log(opt);
+            }
+        })
+    </script>
+</body>
+
+</html>
